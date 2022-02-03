@@ -23,8 +23,16 @@ const db = mysql.createConnection(
 
 // The DB object is using the query() Method. This method runs the SQL query and executes the callback with all the resulting rows that match the query. 
 // This method is the key component that allows SQL commands to be written in a Node.js app.
-db.query(`SELECT * FROM candidates`, (err, rows) => {
+/*db.query(`SELECT * FROM candidates`, (err, rows) => {
     console.log(rows);
+});*/
+
+// GET a single candidate
+db.query(`SELECT * FROM candidates WHERE id = 0`, (err, row) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log(row);
 });
 
 // Default response for any other request (Not Found)
