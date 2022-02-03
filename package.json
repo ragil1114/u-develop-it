@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/ragil1114/u-develop-it/issues"
   },
-  "homepage": "https://github.com/ragil1114/u-develop-it#readme"
+  "homepage": "https://github.com/ragil1114/u-develop-it#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mysql2": "^2.3.3"
+  }
 }
