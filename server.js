@@ -21,7 +21,8 @@ const db = mysql.createConnection(
     console.log('Connected to the election database.')
 );
 
-// The DB object is using the query() Method. This method runs the SQL query and executes the callback with all the resulting rows that match the query.
+// The DB object is using the query() Method. This method runs the SQL query and executes the callback with all the resulting rows that match the query. 
+// This method is the key component that allows SQL commands to be written in a Node.js app.
 db.query(`SELECT * FROM candidates`, (err, rows) => {
     console.log(rows);
 });
