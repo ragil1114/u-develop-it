@@ -28,7 +28,7 @@ const db = mysql.createConnection(
 });*/
 
 // GET a single candidate
-db.query(`SELECT * FROM candidates WHERE id = 0`, (err, row) => {
+db.query(`SELECT * FROM candidates WHERE id = 1`, (err, row) => {
     if (err) {
       console.log(err);
     }
