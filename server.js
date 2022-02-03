@@ -6,6 +6,7 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+// Method to start the server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
