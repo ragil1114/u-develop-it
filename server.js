@@ -6,7 +6,14 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Method to start the server
+//GET test route
+app.get('/', (req, res) => {
+    res.json({
+      message: 'Hello World'
+    });
+});
+
+// Method aka Connection Function to start the server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
