@@ -13,6 +13,11 @@ app.get('/', (req, res) => {
     });
 });
 
+// Default response for any other request (Not Found)
+app.use((req, res) => {
+    res.status(404).end();
+});
+
 // Method aka Connection Function to start the server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
