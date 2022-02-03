@@ -21,7 +21,7 @@ const db = mysql.createConnection(
     console.log('Connected to the election database.')
 );
 
-// GET Request aka Express.js Route to get all candidates
+// query() Method wrapped in a GET Request attached to an Express.js Route which creates an API Endpoint to get all candidates
 app.get('/api/candidates', (req, res) => {
     const sql = `SELECT * FROM candidates`;
     // The db object is using the query() Method. This method runs the SQL query and executes the callback with all the resulting rows that match the query. 
@@ -39,7 +39,7 @@ app.get('/api/candidates', (req, res) => {
     });
 });
 
-// Get a single candidate
+// API Endpoint to get a single candidate
 app.get('/api/candidate/:id', (req, res) => {
     const sql = `SELECT * FROM candidates WHERE id = ?`;
     const params = [req.params.id];
