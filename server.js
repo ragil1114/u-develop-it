@@ -21,11 +21,23 @@ const db = mysql.createConnection(
     console.log('Connected to the election database.')
 );
 
-// The DB object is using the query() Method. This method runs the SQL query and executes the callback with all the resulting rows that match the query. 
-// This method is the key component that allows SQL commands to be written in a Node.js app.
-/*db.query(`SELECT * FROM candidates`, (err, rows) => {
-    console.log(rows);
-});*/
+// GET Request aka Express.js Route to get all candidates
+app.get('/api/candidates', (req, res) => {
+    const sql = `SELECT * FROM candidates`;
+    // The db object is using the query() Method. This method runs the SQL query and executes the callback with all the resulting rows that match the query. 
+    // This method is the key component that allows SQL commands to be written in a Node.js app.
+    // Get all candidates
+    db.query(sql, (err, rows) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+        return;
+      }
+      res.json({
+        message: 'success',
+        data: rows
+      });
+    });
+});
 
 // GET a single candidate
 /*db.query(`SELECT * FROM candidates WHERE id = 1`, (err, row) => {
