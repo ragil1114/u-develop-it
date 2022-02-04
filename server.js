@@ -89,16 +89,18 @@ app.post('/api/candidate', ({ body }, res) => {
       res.status(400).json({ error: errors });
       return;
     }
-    //DB Call to insert candidate
+    // db Call w/ Prepared SQL Statement to insert candidate
     const sql = `INSERT INTO candidates (first_name, last_name, industry_connected)
         VALUES (?,?,?)`;
+    // params Assignement
     const params = [body.first_name, body.last_name, body.industry_connected];
-
+    // db Call logic
     db.query(sql, params, (err, result) => {
         if (err) {
             res.status(400).json({ error: err.message });
             return;
         }
+        // Method to send response back to client from server
         res.json({
             message: 'success',
             data: body
