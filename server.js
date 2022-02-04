@@ -66,6 +66,8 @@ app.delete('/api/candidate/:id', (req, res) => {
     db.query(sql, params, (err, result) => {
       if (err) {
         res.statusMessage(400).json({ error: res.message });
+        // Statement that ensures there are no affectedeRows as a result of the query.
+        // Prevents the deletion of a candidate that doesn't exist.
       } else if (!result.affectedRows) {
         res.json({
           message: 'Candidate not found'
