@@ -135,6 +135,22 @@ app.get('/api/parties', (req, res) => {
   });
 });
 
+// API Route to get a single party
+app.get('/api/party/:id', (req, res) => {
+  const sql = `SELECT * FROM parties WHERE id = ?`;
+  const params = [req.params.id];
+  db.query(sql, params, (err, row) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: row
+    });
+  });
+});
+
 // Default response for any other request (Not Found)
 app.use((req, res) => {
     res.status(404).end();
