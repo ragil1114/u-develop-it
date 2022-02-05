@@ -1,4 +1,6 @@
 const express = require('express');
+// Import module for handling the database connection from db\connection.js
+const db = require('./db/connection');
 // import statement to allow use of inputCheck() function
 const inputCheck = require('./utils/inputCheck');
 const PORT = process.env.PORT || 3001;
