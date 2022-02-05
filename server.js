@@ -25,6 +25,7 @@ const db = mysql.createConnection(
 
 // query() Method wrapped in a GET Request attached to an Express.js Route which creates an API Endpoint to get all candidates
 app.get('/api/candidates', (req, res) => {
+    // < sql variable = JOIN Query; > to get candidates and their respective parties
     const sql = `SELECT candidates.*, parties.name 
       AS party_name 
       FROM candidates 
