@@ -11,6 +11,8 @@ const app = express();
 // Express middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+// Use apiRoutes
+app.use('/api', apiRoutes);
 
 // query() Method wrapped in a GET Request attached to an Express.js Route which creates an API Endpoint to get all candidates
 app.get('/api/candidates', (req, res) => {
