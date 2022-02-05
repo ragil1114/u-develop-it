@@ -1,6 +1,7 @@
 /* This will drop/delete the tables every time you run the schema.sql file, ensuring that you start with a clean slate. */
 DROP TABLE IF EXISTS candidates;
 DROP TABLE IF EXISTS parties;
+DROP TABLE IF EXISTS voters;
 
 CREATE TABLE parties (
   id INTEGER AUTO_INCREMENT PRIMARY KEY,
