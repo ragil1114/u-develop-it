@@ -25,7 +25,11 @@ const db = mysql.createConnection(
 
 // query() Method wrapped in a GET Request attached to an Express.js Route which creates an API Endpoint to get all candidates
 app.get('/api/candidates', (req, res) => {
-    const sql = `SELECT * FROM candidates`;
+    const sql = `SELECT candidates.*, parties.name 
+      AS party_name 
+      FROM candidates 
+      LEFT JOIN parties 
+      ON candidates.party_id = parties.id`;
     // The db object is using the query() Method. This method runs the SQL query and executes the callback with all the resulting rows that match the query. 
     // This method is the key component that allows SQL commands to be written in a Node.js app.
     // Get all candidates
