@@ -46,7 +46,7 @@ app.get('/api/candidates', (req, res) => {
     });
 });
 
-// API Endpoint to get a single candidate
+// API Endpoint to get a single candidate with party affiliation
 app.get('/api/candidate/:id', (req, res) => {
     const sql = `SELECT candidates.*, parties.name 
       AS party_name 
