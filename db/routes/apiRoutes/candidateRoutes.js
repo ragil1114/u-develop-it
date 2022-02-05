@@ -3,8 +3,8 @@ const router = express.Router();
 const db = require('../../db/connection');
 const inputCheck = require('../../utils/inputCheck');
 
-// query() Method wrapped in a GET Request attached to an Express.js Route which creates an API Endpoint to get all candidates
-app.get('/api/candidates', (req, res) => {
+// query() Method wrapped in a GET Request attached to an Express.js Route which creates an API Endpoint to get ALL candidates
+router.get('/candidates', (req, res) => {
     // < sql variable = JOIN Query; > to get all candidates and their party affiliation
     const sql = `SELECT candidates.*, parties.name 
       AS party_name 
@@ -27,7 +27,7 @@ app.get('/api/candidates', (req, res) => {
 });
 
 // API Endpoint to get a single candidate with party affiliation
-app.get('/api/candidate/:id', (req, res) => {
+router.get('/candidate/:id', (req, res) => {
     const sql = `SELECT candidates.*, parties.name 
       AS party_name 
       FROM candidates 
@@ -49,7 +49,7 @@ app.get('/api/candidate/:id', (req, res) => {
 });
 
 // Delete a candidate
-app.delete('/api/candidate/:id', (req, res) => {
+router.delete('/candidate/:id', (req, res) => {
     const sql = `DELETE FROM candidates WHERE id = ?`;
     const params = [req.params.id];
   
@@ -73,7 +73,7 @@ app.delete('/api/candidate/:id', (req, res) => {
 });
 
 // Create a candidate
-app.post('/api/candidate', ({ body }, res) => {
+router.post('/candidate', ({ body }, res) => {
     // inputCheck() Function/Module to verify that user info in the request can create a candidate
     // to use this function, we must import the module at the top of this file
     const errors = inputCheck(body, 'first_name', 'last_name', 'industry_connected');
@@ -101,7 +101,7 @@ app.post('/api/candidate', ({ body }, res) => {
 });
 
 // Update a candidate's party
-app.put('/api/candidate/:id', (req, res) => {
+router.put('/candidate/:id', (req, res) => {
     // Candidate is allowed to not have party affiliation
     const errors = inputCheck(req.body, 'party_id');
     if (errors) {
