@@ -175,6 +175,13 @@ app.delete('/api/party/:id', (req, res) => {
 
 // Update a candidate's party
 app.put('/api/candidate/:id', (req, res) => {
+  // Candidate is allowed to not have party affiliation
+  const errors = inputCheck(req.body, 'party_id');
+  if (errors) {
+    res.status(400).json({ error: errors });
+    return;
+  }
+  
   const sql = `UPDATE candidates SET party_id = ? 
                WHERE id = ?`;
   const params = [req.body.party_id, req.params.id];
