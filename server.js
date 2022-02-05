@@ -1,6 +1,4 @@
 const express = require('express');
-// import MySQL2 module
-const mysql = require('mysql2');
 // import statement to allow use of inputCheck() function
 const inputCheck = require('./utils/inputCheck');
 const PORT = process.env.PORT || 3001;
@@ -9,19 +7,6 @@ const app = express();
 // Express middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
-// Connect to database
-const db = mysql.createConnection(
-    {
-      host: 'localhost',
-      // Your MySQL username,
-      user: 'root',
-      // Your MySQL password
-      password: 'RawD0gg6157!',
-      database: 'election'
-    },
-    console.log('Connected to the election database.')
-);
 
 // query() Method wrapped in a GET Request attached to an Express.js Route which creates an API Endpoint to get all candidates
 app.get('/api/candidates', (req, res) => {
