@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../../db/connection');
+// import statement to allow use of inputCheck() function
 const inputCheck = require('../../utils/inputCheck');
 
 // query() Method wrapped in a GET Request attached to an Express.js Route which creates an API Endpoint to get ALL candidates

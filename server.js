@@ -3,8 +3,6 @@ const express = require('express');
 const db = require('./db/connection');
 // Import all API Routes
 const apiRoutes = require('./routes/apiRoutes');
-// import statement to allow use of inputCheck() function
-const inputCheck = require('./utils/inputCheck');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
