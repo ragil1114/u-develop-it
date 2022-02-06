@@ -26,7 +26,7 @@ router.get('/candidates', (req, res) => {
     });
 });
 
-// API Endpoint to get a single candidate with party affiliation
+// API Endpoint for single candidate with party affiliation
 router.get('/candidate/:id', (req, res) => {
     const sql = `SELECT candidates.*, parties.name 
       AS party_name 
