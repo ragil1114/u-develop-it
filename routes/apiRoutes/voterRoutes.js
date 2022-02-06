@@ -110,4 +110,5 @@ router.delete('/voter/:id', (req, res) => {
   });
 });
 
+
 module.exports = router;
